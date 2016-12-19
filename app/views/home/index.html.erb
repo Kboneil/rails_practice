@@ -1,0 +1,21 @@
+<h2>The Universe in Questions</h2>
+<div class="container">
+  <% @questions.each do |q| %>
+  <div class="media">
+
+
+  <div class="media-left">
+    <img src="<%= q.gravatar %>"/>
+  </div>
+    <div class="media-body">
+      <h4><%= q.email %> asked:</h4>
+      <h5><%= time_ago_in_words q.created_at %> ago</h5>
+      <p><%= q.body %></p>
+      <a href="<%= question_path(q) %>" class="btn btn-success btn-xs">View Answers</a>
+    </div>
+    </div>
+  <% end %>
+  <% if @questions.empty? %>
+  <div class="alert alert-info">Nothing yet, but you can submit a question</div>
+  <% end %>
+</div>

@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="lead well">
+    <div class="media">
+      <div class="media-left">
+        <a href="#">
+        <img class="media-object" src="<%= @question.gravatar %>" />
+      </a>
+      <div class="media-body">
+        <h4 class="media-heading"><%= @question.email %>asked:</h4>
+        <%= @question.body %>
+      </div>
+      </div>
+    </div>
+    </div>
+    <% if @answers.empty? %>
+    <div class="alert alert-info">Nothing yet, but you can give an answer</div>
+    <% end %>
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2">
+        <div>
+          <button class="btn btn-success btn-sm" data-toggle = "modal" data-target = "#new-answer-modal">new answer</button>
+        </div>
+        <%= render 'home/new_answer_form' %>
+
+          <% @answers.each do |answer| %>
+          <div class="media">
+
+
+          <div class="media-left">
+            <img src="<%= answer.gravatar %>"/>
+          </div>
+            <div class="media-body">
+              <h4><%= answer.email %> answered:</h4>
+              <h5><%= time_ago_in_words answer.created_at %> ago</h5>
+              <p><%= answer.body %></p>
+            </div>
+            </div>
+          <% end %>
+
+
+    </div>
+  </div>
+</div>
