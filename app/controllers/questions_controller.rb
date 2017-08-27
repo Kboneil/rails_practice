@@ -7,6 +7,7 @@ class QuestionsController < ApplicationController
   def create
     Question.create(question_params)
     session[:current_user_email] = question_params[:email]
+    session[:current_gravatar] = question_params[:gravatar]
     redirect_to root_path
   end
 
